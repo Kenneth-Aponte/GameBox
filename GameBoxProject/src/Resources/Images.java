@@ -24,6 +24,8 @@ public class Images {
     public static BufferedImage[] pauseResumeButton;
     public static BufferedImage[] pauseToTitleButton;
     public static BufferedImage[] pauseOptionsButton;
+    public static BufferedImage[] games;
+    
     
     
     public Images() {
@@ -32,14 +34,13 @@ public class Images {
         pauseResumeButton = new BufferedImage[2];
         pauseToTitleButton = new BufferedImage[2];
         pauseOptionsButton = new BufferedImage[2];
-
+        games = new BufferedImage[7];
         try {
 
             startGameButton[0]= ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Start/NormalStartButton.png"));
             startGameButton[1]= ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Start/HoverStartButton.png"));
             startGameButton[2]= ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Start/ClickedStartButton.png"));
             
-            //main screen display by Nolan989890 from deviantart.com
             titleScreenBackground = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/Title.png"));
 
             pauseBackground = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/Pause.png"));
@@ -57,10 +58,15 @@ public class Images {
 
             pauseOptionsButton[0] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Pause/ToOptions/NormalHoverToOptionsButton.png"));
             pauseOptionsButton[1] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Pause/ToOptions/PressedToOptionsButton.png"));
-
-      
-
-
+            
+            
+            games[0] = ImageIO.read(getClass().getResourceAsStream("/RacingGameImages/LogoGameRacing.png"));
+            games[1] = ImageIO.read(getClass().getResourceAsStream("/PixelGunGameImages/LogoPixelGun.png"));
+            games[2] = ImageIO.read(getClass().getResourceAsStream("/MarioGameImages/LogoMarioGame.png"));
+            games[3] = ImageIO.read(getClass().getResourceAsStream("/KirbyGameImages/LogoKirbyGame.png"));
+            games[4] = ImageIO.read(getClass().getResourceAsStream("/PacManGameImages/LogoPacManGame.png"));
+            games[5] = ImageIO.read(getClass().getResourceAsStream("/GalagaGameImages/LogoGalagaGame.png"));
+            games[6] = ImageIO.read(getClass().getResourceAsStream("/ZeldaGameImages/LogoZeldaGame.png"));
            
             
         }catch (IOException e) {

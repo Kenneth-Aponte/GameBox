@@ -1,6 +1,6 @@
 package Game.GameStates;
 
-import Display.UI.ClickListener;
+
 import Display.UI.UIImageButton;
 import Display.UI.UIManager;
 import Main.Handler;
@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -18,70 +19,91 @@ import java.util.Objects;
  * Created by AlexVR on 1/24/2020.
  */
 public class GameState extends State {
-
-    private UIManager uiManager;
+	public boolean moveR = false,moveL = false,gameSelected,reachedR = false,reachedL = false;
+	public int selector = 1;
+	public BufferedImage currentGame,lGame,rGame;
 
     public GameState(Handler handler){
         super(handler);
-        refresh();
+        currentGame = Images.games[0];
     }
 
 
     @Override
     public void tick() {
-
-        handler.getMouseManager().setUimanager(uiManager);
-        uiManager.tick();
-
-
+    	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)) {
+    		selector++;
+    	}
+    	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)) {
+    		selector--;
+    	}
+    	if(selector == -1) {
+    		selector = 6;
+    	}
+    	
+    	if(selector == 7) {
+    		selector = 0;
+    	}
+    	
+    	currentGame = Images.games[selector];
+    	
+    	if(selector == 0) {
+    		lGame = Images.games[6];
+    	}
+    	else {
+    		lGame = Images.games[selector - 1];
+    	}
+    	if(selector == 6) {
+    		rGame = Images.games[0];
+    	}
+    	else {
+    		rGame = Images.games[selector + 1];
+    	}
     }
 
+    
     @Override
     public void render(Graphics g) {
-        g.drawImage(Images.selectionBackground,0,0,handler.getWidth(),handler.getHeight(),null);
-        uiManager.Render(g);
+
+    	drawSelectionSquares(g);
+    	//game squares drawings
+    	g.drawImage(currentGame, handler.getWidth()/4 + handler.getWidth()/8 + handler.getWidth()/125, handler.getHeight()/3 + handler.getWidth()/125, handler.getWidth()/4 - handler.getWidth()/75, handler.getWidth()/4 - handler.getWidth()/75,null);
+    	g.drawImage(lGame,(handler.getWidth()/16 + handler.getWidth()/32) + handler.getWidth()/125, (handler.getHeight()/3 + handler.getHeight()/16) + handler.getWidth()/125, handler.getWidth()/6 - handler.getWidth()/75, handler.getWidth()/6 - handler.getWidth()/75,null);
+    	g.drawImage(rGame,(handler.getWidth() - (handler.getWidth()/16 + handler.getWidth()/32) - handler.getWidth()/6) + handler.getWidth()/125,  (handler.getHeight()/3 + handler.getHeight()/16) + handler.getWidth()/125, handler.getWidth()/6 - handler.getWidth()/75, handler.getWidth()/6 - handler.getWidth()/75,null);
     }
 
+    
+    public void drawSelectionSquares(Graphics g) {
+    	//background
+    	g.setColor(new Color(31,86,100));
+    	g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
+    	
+    	//center square
+    	g.setColor(Color.LIGHT_GRAY);
+    	g.fillRoundRect((handler.getWidth()/4 + handler.getWidth()/8) - handler.getWidth()/250, (handler.getHeight()/3) - handler.getWidth()/250, (handler.getWidth()/4) + handler.getWidth()/125, (handler.getWidth()/4) + handler.getWidth()/125, 55, 55);
+    	g.setColor(Color.WHITE);
+    	g.fillRoundRect(handler.getWidth()/4 + handler.getWidth()/8, handler.getHeight()/3, handler.getWidth()/4, handler.getWidth()/4, 55, 55);
+    	
+    	//left square
+    	g.setColor(Color.LIGHT_GRAY);
+    	g.fillRoundRect((handler.getWidth()/16 + handler.getWidth()/32) - handler.getWidth()/250, (handler.getHeight()/3 + handler.getHeight()/16) - handler.getWidth()/250, (handler.getWidth()/6) + handler.getWidth()/125, (handler.getWidth()/6) + handler.getWidth()/125, 55, 55);
+    	g.setColor(Color.WHITE);
+    	g.fillRoundRect(handler.getWidth()/16 + handler.getWidth()/32, handler.getHeight()/3 + handler.getHeight()/16, handler.getWidth()/6, handler.getWidth()/6, 55, 55);
+    	
+    	//right square
+    	
+    	g.setColor(Color.LIGHT_GRAY);
+    	g.fillRoundRect(handler.getWidth() - ((handler.getWidth()/16 + handler.getWidth()/32) - handler.getWidth()/250) - (handler.getWidth()/6 + handler.getWidth()/125), (handler.getHeight()/3 + handler.getHeight()/16) - handler.getWidth()/250, (handler.getWidth()/6) + handler.getWidth()/125, (handler.getWidth()/6) + handler.getWidth()/125, 55, 55);
+    	g.setColor(Color.WHITE);
+    	g.fillRoundRect(handler.getWidth() - (handler.getWidth()/16 + handler.getWidth()/32) - handler.getWidth()/6,  (handler.getHeight()/3 + handler.getHeight()/16), handler.getWidth()/6, handler.getWidth()/6, 55, 55);
+    	
+    }
+    
     @Override
     public void refresh() {
-        uiManager = new UIManager(handler);
-        handler.getMouseManager().setUimanager(uiManager);
-
-
-        uiManager.addObjects(new UIImageButton((handler.getWidth() / 2) - (handler.getWidth() /3) + 24, (handler.getHeight() /2)-(handler.getHeight() /32), handler.getWidth()/7, handler.getHeight()/6, Images.muteIcon, new ClickListener() {
-            @Override
-            public void onClick() {
-                if (handler.getState() == handler.getGameState()) {
-
-                    handler.getMouseManager().setUimanager(null);
-                    handler.getMusicHandler().triggerGalaga();
-                }
-            }
-        }));
-
-        uiManager.addObjects(new UIImageButton(((handler.getWidth() / 2)) - ((handler.getWidth() / 14)) , (handler.getHeight() /2)-(handler.getHeight() /32), handler.getWidth()/8, handler.getHeight()/8, Images.muteIcon, new ClickListener() {
-            @Override
-            public void onClick() {
-                if (handler.getState() == handler.getGameState()) {
-                    handler.getMouseManager().setUimanager(null);
-                    handler.getMusicHandler().stopMusic();
-                }
-            }
-        }));
-
-        uiManager.addObjects(new UIImageButton(((handler.getWidth() / 2)) + ((handler.getWidth() / 5)) - ((handler.getWidth() / 64)), (handler.getHeight() /2)-(handler.getHeight() /32), handler.getWidth()/8, handler.getHeight()/8, Images.muteIcon, new ClickListener() {
-            @Override
-            public void onClick() {
-                if (handler.getState() == handler.getGameState()) {
-                    handler.getMouseManager().setUimanager(null);
-                    //----------PHASE_1 Spec # 2--------------------------------------------------------------------------------------
-                    // add music to the Zelda start screen
-                  	handler.getMusicHandler().changeMusic("lost-woods.wav");
-                    //----------------------------------------------------------------------------------------------------------------
-                }
-            }
-        }));
-
-
+       selector = 0;
+       moveL = false ;
+       moveR = false;
+       gameSelected = false;
     }
 }
