@@ -19,7 +19,6 @@ import java.util.Objects;
  * Created by AlexVR on 1/24/2020.
  */
 public class GameState extends State {
-	public boolean moveR = false,moveL = false,gameSelected,reachedR = false,reachedL = false;
 	public int selector = 1;
 	public BufferedImage currentGame,lGame,rGame;
 
@@ -31,6 +30,34 @@ public class GameState extends State {
 
     @Override
     public void tick() {
+    	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)) {
+    		switch(selector) {
+    		case 0:
+    			System.out.println("game not available");
+    			break;
+    		case 1:
+    			System.out.println("game not available");
+    			break;
+    		case 2:
+    			System.out.println("game not available");
+    			break;
+    		case 3:
+    			System.out.println("game not available");
+    			break;
+    		case 4:
+    			System.out.println("game not available");
+    			break;
+    		case 5:
+    			handler.changeState(handler.getGalagaState());
+    			handler.getMusicHandler().stopAllEffects();
+    			handler.getMusicHandler().stopMusic();
+    			break;
+    		case 6:
+    			System.out.println("game not available");
+    			break;
+    			
+    		}
+    	}
     	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)) {
     		selector++;
     	}
@@ -102,8 +129,5 @@ public class GameState extends State {
     @Override
     public void refresh() {
        selector = 0;
-       moveL = false ;
-       moveR = false;
-       gameSelected = false;
     }
 }

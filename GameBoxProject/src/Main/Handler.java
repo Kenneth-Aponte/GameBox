@@ -71,6 +71,10 @@ public class Handler {
     public PauseState getPauseState (){
         return (PauseState) getGameProperties().pauseState;
     }
+    
+    public GalagaState getGalagaState() {
+    	return (GalagaState) getGameProperties().galagaState;
+    }
 
     public void changeState(State state){
         State.setState(state);

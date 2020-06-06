@@ -76,6 +76,7 @@ public class GameSetUp implements Runnable {
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
+        galagaState = new GalagaState(handler);
 
         handler.setScoreManager(new ScoreManager(handler));
         handler.setMusicHandler(new MusicHandler(handler));
