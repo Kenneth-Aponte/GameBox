@@ -45,11 +45,11 @@ public class GameState extends State {
     			System.out.println("game not available");
     			break;
     		case 4:
-    			System.out.println("game not available");
+    			handler.changeState(handler.getPacManState());
+    			handler.getMusicHandler().stopMusic();
     			break;
     		case 5:
     			handler.changeState(handler.getGalagaState());
-    			handler.getMusicHandler().stopAllEffects();
     			handler.getMusicHandler().stopMusic();
     			break;
     		case 6:

@@ -39,6 +39,8 @@ public class GameSetUp implements Runnable {
     public State pauseState;
     public State galagaState;
     public State pacmanState;
+    public State gameoverState;
+    public State victoryState;
     public State zeldaGameState;
     public State zeldaMapMakerState;
     public State zeldaIntroState;
@@ -77,7 +79,10 @@ public class GameSetUp implements Runnable {
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
         galagaState = new GalagaState(handler);
-
+        pacmanState = new PacManState(handler);
+        victoryState = new VictoryState(handler);
+        gameoverState = new GameOverState(handler);
+        
         handler.setScoreManager(new ScoreManager(handler));
         handler.setMusicHandler(new MusicHandler(handler));
         // music on main menu screen by Atlas Blue

@@ -54,7 +54,7 @@ public class Animation {
 
     }
     
-    public void tickS(){//for strings
+    public void tick2(){//for strings
         timer += System.currentTimeMillis() - lastTime;
         lastTime = System.currentTimeMillis();
 

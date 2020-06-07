@@ -15,7 +15,13 @@ import java.util.Objects;
  */
 public class Images {
 
-
+	public static BufferedImage skeletorKillsAgain;
+	public static BufferedImage[] skeletorDefault;
+	public static BufferedImage[] skeletorAttacked;
+	public static BufferedImage tPose;
+	public static BufferedImage celebration;
+	public static BufferedImage gameOver;
+	public static BufferedImage pakuMan;
     public static BufferedImage titleScreenBackground;
     public static BufferedImage pauseBackground;
     public static BufferedImage selectionBackground;
@@ -35,12 +41,44 @@ public class Images {
     public static BufferedImage[] galagaEnemyDeath;
     public static BufferedImage[] galagaEnemyBee;
     public static BufferedImage[] galagamyEnemy;
+    
+    public static BufferedImage map1;
+    public static BufferedImage map2;
+    public static BufferedImage map3;
+    public static BufferedImage OriginalMap;
+    public static BufferedImage pacmanMapImage;
+    public static BufferedImage[] ghostEdible;
+    public static BufferedImage[] ghostLeft1;
+    public static BufferedImage[] ghostLeft2;
+    public static BufferedImage[] ghostRight1;
+    public static BufferedImage[] ghostRight2;
+    public static BufferedImage[] ghostUp1;
+    public static BufferedImage[] ghostUp2;
+    public static BufferedImage[] ghostDown1;
+    public static BufferedImage[] ghostDown2;
+    public static BufferedImage[] pacmanDots;
+    public static BufferedImage[] pacmanRight;
+    public static BufferedImage[] pacmanLeft;
+    public static BufferedImage[] pacmanUp;
+    public static BufferedImage[] pacmanDown;
+    public static BufferedImage[] pacManDeath;
+    public static BufferedImage[] pacmanScore;
+    public static BufferedImage[] pacmanFruits;
+    public static BufferedImage[] pacmanGameSelection;
+    public static BufferedImage PacManLogo;
+    public static BufferedImage[] bound;
+    public static BufferedImage intro;
+    public static BufferedImage start;
+    
     public static BufferedImage galagaImageSheet;
     public SpriteSheet galagaSpriteSheet;
     
-    
+    public static BufferedImage pacmanImageSheet;
+    public SpriteSheet pacmanSpriteSheet;
     
     public Images() {
+    	skeletorDefault = new BufferedImage[12];
+    	skeletorAttacked = new BufferedImage[14];
 
         startGameButton = new BufferedImage[3];
         pauseResumeButton = new BufferedImage[2];
@@ -55,7 +93,57 @@ public class Images {
         galagaEnemyBee = new BufferedImage[8];
         galagamyEnemy = new BufferedImage[7];
         
+        pacmanDots = new BufferedImage[3];
+        pacmanRight = new BufferedImage[2];
+        pacmanLeft = new BufferedImage[2];
+        pacmanUp = new BufferedImage[2];
+        pacmanDown = new BufferedImage[2];
+        bound = new BufferedImage[16];
+        ghostEdible = new BufferedImage[4];
+        ghostLeft1 = new BufferedImage[4];
+        ghostLeft2 = new BufferedImage[4];
+        ghostRight1 = new BufferedImage[4];
+        ghostRight2 = new BufferedImage[4];
+        ghostUp1 = new BufferedImage[4];
+        ghostUp2 = new BufferedImage[4];
+        ghostDown1 = new BufferedImage[4];
+        ghostDown2 = new BufferedImage[4];
+        pacManDeath = new BufferedImage[11];
+        pacmanScore = new BufferedImage[5];
+        pacmanFruits = new BufferedImage[5];
+        pacmanGameSelection = new BufferedImage[2];
+        
         try {
+        	skeletorKillsAgain = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/skeletorKillsAgain.png"));
+        	skeletorAttacked[0] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee00.png"));
+        	skeletorAttacked[1] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee01.png"));
+        	skeletorAttacked[2] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee02.png"));
+        	skeletorAttacked[3] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee03.png"));
+        	skeletorAttacked[4] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee04.png"));
+        	skeletorAttacked[5] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee05.png"));
+        	skeletorAttacked[6] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee06.png"));
+        	skeletorAttacked[7] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee07.png"));
+        	skeletorAttacked[8] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee08.png"));
+        	skeletorAttacked[9] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee09.png"));
+        	skeletorAttacked[10] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee10.png"));
+        	skeletorAttacked[11] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee11.png"));
+        	skeletorAttacked[12] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee12.png"));
+        	skeletorAttacked[13] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/SkeletorFlee13.png"));
+        		
+        	skeletorDefault[0] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor00.png"));
+        	skeletorDefault[1] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor01.png"));
+        	skeletorDefault[2] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor02.png"));
+        	skeletorDefault[3] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor03.png"));
+        	skeletorDefault[4] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor04.png"));
+        	skeletorDefault[5] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor05.png"));
+        	skeletorDefault[6] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor06.png"));
+        	skeletorDefault[7] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor07.png"));
+        	skeletorDefault[8] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor08.png"));
+        	skeletorDefault[9] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor09.png"));
+        	skeletorDefault[10] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor10.png"));
+        	skeletorDefault[11] = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/Skeletor/Skeletor11.png"));		
+        	
+        	
         	startGameButton[0]= ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Start/NormalStartButton.png"));
             startGameButton[1]= ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Start/HoverStartButton.png"));
             startGameButton[2]= ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Start/ClickedStartButton.png"));
@@ -135,6 +223,128 @@ public class Images {
 
             galagaPlayerLaser = galagaSpriteSheet.crop(373 ,50, 4, 8);
             galagamyEnemyLaser = galagaSpriteSheet.crop(224, 103, 16, 10);
+            
+            pacmanImageSheet = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/Background.png"));
+            PacManLogo = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/PacManLogo.png"));
+            pacmanSpriteSheet = new SpriteSheet(pacmanImageSheet);
+            pacmanMapImage = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/pacmanImage.png"));
+            map1 = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/PacManMaps/map1.png"));
+            map2 = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/PacManMaps/map2.png"));
+            map3 = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/PacManMaps/map3.png"));
+            OriginalMap = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/PacManMaps/OGMap.png"));           
+            
+            ghostEdible[0] = pacmanSpriteSheet.crop(584,64,16,16);
+            ghostEdible[1] = pacmanSpriteSheet.crop(600,64,16,16);
+            ghostEdible[2] = pacmanSpriteSheet.crop(616,64,16,16);
+            ghostEdible[3] = pacmanSpriteSheet.crop(632,64,16,16);
+            
+            
+            ghostRight1[0] = pacmanSpriteSheet.crop(456,64,16,16);//Red
+            ghostRight1[1] = pacmanSpriteSheet.crop(456,80,16,16);//Pink
+            ghostRight1[2] = pacmanSpriteSheet.crop(456,96,16,16);//Blue            
+            ghostRight1[3] = pacmanSpriteSheet.crop(456,112,16,16);//Brown
+            
+            ghostRight2[0] = pacmanSpriteSheet.crop(472,64,16,16);//Red
+            ghostRight2[1] = pacmanSpriteSheet.crop(472,80,16,16);//Pink
+            ghostRight2[2] = pacmanSpriteSheet.crop(472,96,16,16);//Blue
+            ghostRight2[3] = pacmanSpriteSheet.crop(472,112,16,16);//Brown
+    
+            
+            ghostLeft1[0] = pacmanSpriteSheet.crop(488,64,16,16);//Red
+            ghostLeft1[1] = pacmanSpriteSheet.crop(488,80,16,16);//Pink
+            ghostLeft1[2] = pacmanSpriteSheet.crop(488,96,16,16);//Blue
+            ghostLeft1[3] = pacmanSpriteSheet.crop(488,112,16,16);//Brown
+            
+            ghostLeft2[0] = pacmanSpriteSheet.crop(504,64,16,16);//Red
+            ghostLeft2[1] = pacmanSpriteSheet.crop(504,80,16,16);//Pink
+            ghostLeft2[2] = pacmanSpriteSheet.crop(504,96,16,16);//Blue
+            ghostLeft2[3] = pacmanSpriteSheet.crop(504,112,16,16);//Brown     
+            
+            
+            ghostUp1[0] = pacmanSpriteSheet.crop(520,64,16,16);//Red
+            ghostUp1[1] = pacmanSpriteSheet.crop(520,80,16,16);//Pink
+            ghostUp1[2] = pacmanSpriteSheet.crop(520,96,16,16);//Blue
+            ghostUp1[3] = pacmanSpriteSheet.crop(520,112,16,16);//Brown
+            
+            ghostUp2[0] = pacmanSpriteSheet.crop(536,64,16,16);//Red
+            ghostUp2[1] = pacmanSpriteSheet.crop(536,80,16,16);//Pink
+            ghostUp2[2] = pacmanSpriteSheet.crop(536,96,16,16);//Blue      
+            ghostUp2[3] = pacmanSpriteSheet.crop(536,112,16,16);//Brown
+            
+            
+            ghostDown1[0] = pacmanSpriteSheet.crop(552,64,16,16);//Red
+            ghostDown1[1] = pacmanSpriteSheet.crop(552,80,16,16);//Pink  
+            ghostDown1[2] = pacmanSpriteSheet.crop(552,96,16,16);//Blue 
+            ghostDown1[3] = pacmanSpriteSheet.crop(552,112,16,16);//Brown
+            
+            ghostDown2[0] = pacmanSpriteSheet.crop(568,64,16,16);//Red
+            ghostDown2[1] = pacmanSpriteSheet.crop(568,80,16,16);//Pink 
+            ghostDown2[2] = pacmanSpriteSheet.crop(568,96,16,16);//Blue    
+            ghostDown2[3] = pacmanSpriteSheet.crop(568,112,16,16);//Brown
+            
+            
+            pacmanDots[0] = pacmanSpriteSheet.crop(643,18,16,16);
+            pacmanDots[1] = pacmanSpriteSheet.crop(623,18,16,16);
+
+            bound[0] = pacmanSpriteSheet.crop(603,18,16,16);//single
+            bound[1] = pacmanSpriteSheet.crop(615,37,16,16);//right open
+            bound[2] = pacmanSpriteSheet.crop(635,37,16,16);//down open
+            bound[3] = pacmanSpriteSheet.crop(655,37,16,16);//left open
+            bound[4] = pacmanSpriteSheet.crop(655,57,16,16);//up open
+            bound[5] = pacmanSpriteSheet.crop(655,75,16,16);//up/down
+            bound[6] = pacmanSpriteSheet.crop(656,116,16,16);//left/Right
+            bound[7] = pacmanSpriteSheet.crop(656,136,16,16);//up/Right
+            bound[8] = pacmanSpriteSheet.crop(655,174,16,16);//up/left
+            bound[9] = pacmanSpriteSheet.crop(655,155,16,16);//down/Right
+            bound[10] = pacmanSpriteSheet.crop(655,192,16,16);//down/left
+            bound[11] = pacmanSpriteSheet.crop(664,232,16,16);//all
+            bound[12] = pacmanSpriteSheet.crop(479,191,16,16);//left
+            bound[13] = pacmanSpriteSheet.crop(494,191,16,16);//right
+            bound[14] = pacmanSpriteSheet.crop(479,208,16,16);//top
+            bound[15] = pacmanSpriteSheet.crop(479,223,16,16);//bottom
+
+            pacmanRight[0] = pacmanSpriteSheet.crop(473,1,12,13);
+            pacmanRight[1] = pacmanSpriteSheet.crop(489,1,13,13);
+
+            pacmanLeft[0] = pacmanSpriteSheet.crop(474,17,12,13);
+            pacmanLeft[1] = pacmanSpriteSheet.crop(489,1,13,13);
+
+            pacmanUp[0] = pacmanSpriteSheet.crop(473,34,13,12);
+            pacmanUp[1] = pacmanSpriteSheet.crop(489,1,13,13);
+
+            pacmanDown[0] = pacmanSpriteSheet.crop(473,48,13,12);
+            pacmanDown[1] = pacmanSpriteSheet.crop(489,1,13,13);
+            
+            pacManDeath[0] = pacmanSpriteSheet.crop(504, 2, 15, 11);
+            pacManDeath[1] = pacmanSpriteSheet.crop(519, 3, 17, 10);
+            pacManDeath[2] = pacmanSpriteSheet.crop(535, 5, 17, 8);
+            pacManDeath[3] = pacmanSpriteSheet.crop(551, 6, 17, 7);
+            pacManDeath[4] = pacmanSpriteSheet.crop(567, 7, 17, 7);
+            pacManDeath[5] = pacmanSpriteSheet.crop(583, 7, 17, 8);
+            pacManDeath[6] = pacmanSpriteSheet.crop(600, 7, 15, 9);
+            pacManDeath[7] = pacmanSpriteSheet.crop(616, 7, 15, 9);
+            pacManDeath[8] = pacmanSpriteSheet.crop(632, 7, 15, 9);
+            pacManDeath[9] = pacmanSpriteSheet.crop(648, 7, 15, 8);
+            pacManDeath[10] = pacmanSpriteSheet.crop(665, 5, 13, 12);
+            
+            pacmanScore[0] = pacmanSpriteSheet.crop(487, 147, 17, 9);
+            
+            pacmanFruits[0] = pacmanSpriteSheet.crop(489, 49, 14, 14);
+            pacmanFruits[1] = pacmanSpriteSheet.crop(505, 49, 13, 14);
+            pacmanFruits[2] = pacmanSpriteSheet.crop(521, 49, 14, 14);
+            pacmanFruits[3] = pacmanSpriteSheet.crop(537, 49, 14, 14);
+            pacmanFruits[4] = pacmanSpriteSheet.crop(554, 48, 13, 16);
+            
+            pacmanGameSelection[0] = pacmanMapImage;
+            pacmanGameSelection[1] = pacmanSpriteSheet.crop(0,0,225,248);//original pacman Map
+            
+            tPose = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/Tpose.png"));
+            celebration = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/Celebration.png"));
+            pakuMan = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/Pac-man.png"));
+            gameOver = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/GameOver2.png"));
+            intro = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/intro.png"));
+            start = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/startScreen.png"));
+
             
         }catch (IOException e) {
         e.printStackTrace();

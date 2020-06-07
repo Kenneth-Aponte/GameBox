@@ -2,6 +2,8 @@ package Main;
 
 import Display.DisplayScreen;
 import Game.GameStates.*;
+import Game.PacMan.World.Map;
+import Game.PacMan.entities.Dynamics.PacMan;
 import Input.KeyManager;
 import Input.MouseManager;
 import Resources.MusicHandler;
@@ -25,6 +27,8 @@ public class Handler {
     private MusicHandler musicHandler;
     private ArrayList<Clip> effects;
     private State lastState;
+    private Map map;
+    private PacMan pacman;
     public static boolean DEBUG = false;
 
     public Handler(GameSetUp game){
@@ -74,6 +78,18 @@ public class Handler {
     
     public GalagaState getGalagaState() {
     	return (GalagaState) getGameProperties().galagaState;
+    }
+    
+    public PacManState getPacManState() {
+    	return (PacManState) getGameProperties().pacmanState;
+    }
+    
+    public GameOverState getGameOverState(){
+        return (GameOverState)getGameProperties().gameoverState;
+    }
+    
+    public VictoryState getVictoryState(){
+    	return (VictoryState)getGameProperties().victoryState;
     }
 
     public void changeState(State state){
@@ -138,5 +154,20 @@ public class Handler {
 
     public void setLastState(State lastState) {
         this.lastState = lastState;
+    }
+    
+    public Map getMap() {
+        return map;
+    }
+    public void setMap(Map map){
+        this.map=map;
+    }
+
+    public PacMan getPacman() {
+        return pacman;
+    }
+
+    public void setPacman(PacMan pacman) {
+        this.pacman = pacman;
     }
 }
